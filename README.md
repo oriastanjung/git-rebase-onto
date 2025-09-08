@@ -11,8 +11,8 @@ git rebase --onto <mau tempel kemana> <titk commit mulai terpisah> <branch yang 
 ```
 
 **Parameter:**
-- `<base-baru>`: Branch/commit target tempat commit akan di-rebase
-- `<base-lama>`: Commit tempat range rebase dimulai (eksklusif)
+- `<mau tempel kemana>`: Branch/commit target tempat commit akan di-rebase
+- `<titk commit mulai terpisah>`: Commit tempat range rebase dimulai (eksklusif)
 - `<branch-yang-di-rebase>`: Branch yang berisi commit yang akan di-rebase
 
 ## Skenario Kasus
