@@ -67,6 +67,43 @@ Jika terjadi konflik selama rebase:
 git rebase --abort
 ```
 
+Rebase Conflict
+
+
+While rebasing, sometimes there'll be many commits conflicted, for example more than 40 commits conflicted. While most of them are needed to accept the "Current" changes, we can just run this bash script to auto resolve that conflicted commits by applying current changes. So, there'll be no need to manually resolving the each conflicted files for every commits.
+
+
+A. Rebase Resolve
+
+
+Step 1. Run git rebase
+
+git rebase origin/feat-1 feat-2
+
+Step 2. Check all conflicting files (optional)
+
+git diff --name-only --diff-filter=U
+
+Step 3. Resolve All Conflicts with OURS (current changes). To apply OURS to all conflicting files in the current commit:
+
+git diff --name-only --diff-filter=U | xargs -I {} git checkout --ours {}
+git diff --name-only --diff-filter=U | xargs git add
+
+Step 4. Continue the Rebase
+
+git rebase --continue
+
+Repeat step 2-4 until the rebase complete
+
+Step Optional, if you want to cancel the rebase, you can do:
+
+git rebase --abort
+
+
+WARNING: Sometimes for the recent commits, it is safe to apply OURS. But for the near of the last commits (e.g. 38/40), it is better to take a look for the changes since it will overwrite your updated changes.
+
+
+
 ### 4. Force Push Hasil
 
 Push branch yang sudah di-rebase ke remote:
